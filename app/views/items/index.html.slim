@@ -1,0 +1,33 @@
+.alert.alert-primary
+  | Продано на
+  =< @total_sold
+
+table.table
+  thead
+    tr
+      th[scope="col"]
+      th[scope="col"]
+        | Название
+      th[scope="col"]
+        | Стоимость
+      th[scope="col"]
+        | Наличие
+      th[scope="col"]
+        | Продано
+      th[scope="col"]
+
+  tbody
+    - @items.each do |item|
+      tr
+        td
+          = link_to 'Продать', sell_item_path(item), class: 'btn btn-success btn-sm', method: :put
+        td
+          = item.name
+        td
+          = item.price
+        td
+          = item.qty
+        td
+          = item.sold
+        td
+          = link_to 'Отменить', undo_item_path(item), class: 'btn btn-danger btn-sm', method: :put, data: { confirm: 'Точно?' }
