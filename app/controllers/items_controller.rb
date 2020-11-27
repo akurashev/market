@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
   def index
     @items = Item.order(:id)
     @total_sold = Item.sum('sold * price')
+    @total_sold_items = Item.sum('sold')
   end
 
   def sell
@@ -13,7 +14,11 @@ class ItemsController < ApplicationController
   end
 
   def undo
-    Item.find(params[:id]).decrement!(:sold)
+    item = Item.find(params[:id])
+
+    return if item.sold <= 0
+
+    item.decrement!(:sold)
 
     redirect_to root_path
   end
