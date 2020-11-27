@@ -37,10 +37,11 @@ class ItemsController < ApplicationController
       name = row[0].to_s.strip
       price = row[2].to_s.gsub(/\D/, '').to_i
       qty = row[3].to_s.strip.to_i
+      group = row[7].to_s.strip.to_i
 
       next if name.blank?
 
-      Item.create(name: name, price: price, qty: qty)
+      Item.create(name: name, price: price, qty: qty, group: group)
     end
 
     redirect_to root_path

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_27_185345) do
+ActiveRecord::Schema.define(version: 2020_11_27_200325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2020_11_27_185345) do
     t.integer "price"
     t.integer "qty"
     t.integer "sold", default: 0
+    t.integer "group"
   end
 
 end
