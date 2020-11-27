@@ -30,7 +30,7 @@ set :rvm_ruby_version, 'ruby-2.7.1@market'
 set :format,    :pretty
 set :log_level, :debug
 
-set :linked_files, %w{config/database.yml config/master.key}
+set :linked_files, %w{config/master.key}
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle node_modules}
 
 set :yarn_target_path, -> { release_path.join('node_modules') }
