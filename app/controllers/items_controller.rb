@@ -10,17 +10,17 @@ class ItemsController < ApplicationController
   def sell
     Item.find(params[:id]).increment!(:sold)
 
-    redirect_to root_path
+    head :ok
   end
 
   def undo
     item = Item.find(params[:id])
 
-    return if item.sold <= 0
+    head :bad_request and return if item.sold <= 0
 
     item.decrement!(:sold)
 
-    redirect_to root_path
+    head :ok
   end
 
   def new

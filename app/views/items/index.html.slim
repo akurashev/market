@@ -1,8 +1,10 @@
 .alert.alert-primary
   | Продано
-  =<> @total_sold_items
+  span.js-total-sold-items<>
+    = @total_sold_items
   | шт. на
-  =<> @total_sold
+  span.js-total-sold<>
+    = @total_sold
   | ₽
 
 table.table.table-sm
@@ -23,16 +25,16 @@ table.table.table-sm
     - @items.each do |item|
       tr class="#{'table-info' if item.group == 2}"
         td
-          = link_to undo_item_path(item), class: 'btn btn-danger btn-sm', method: :put do
+          = link_to undo_item_path(item), class: 'btn btn-danger btn-sm js-undo-link', method: :put, data: { remote: true } do
             i.fas.fa-trash
         td
           = item.name
-        td
+        td.js-price-cell
           = item.price
-        td
+        td.js-qty-cell
           = item.qty
-        td
+        td.js-sold-cell
           = item.sold
         td
-          = link_to sell_item_path(item), class: 'btn btn-success btn-sm', method: :put do
+          = link_to sell_item_path(item), class: 'btn btn-success btn-sm js-sell-link', method: :put, data: { remote: true } do
             i.fas.fa-ruble-sign
