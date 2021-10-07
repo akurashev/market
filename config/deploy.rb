@@ -25,7 +25,7 @@ set :puma_worker_timeout, nil
 set :puma_init_active_record, true  # Change to false when not using ActiveRecord
 
 set :rvm_type,         :auto
-set :rvm_ruby_version, 'ruby-3.0.2@market'
+set :rvm_ruby_version, 'ruby-2.7.1@market'
 
 set :format,    :pretty
 set :log_level, :debug
