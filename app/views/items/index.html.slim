@@ -7,6 +7,12 @@
     = @total_sold
   | ₽
 
+.input-group.my-3
+  input type="text" id="name-filter" class="form-control" placeholder="Поиск"
+  .input-group-append
+    button.btn.btn-outline-secondary.js-filter-reset
+      i.fas.fa-times
+
 table.table.table-sm
   thead
     tr
@@ -27,7 +33,7 @@ table.table.table-sm
         td
           = link_to undo_item_path(item), class: 'btn btn-danger btn-sm js-undo-link', method: :put, data: { remote: true } do
             i.fas.fa-trash
-        td
+        td.js-name-cell
           = item.name
         td.js-price-cell
           = item.price
